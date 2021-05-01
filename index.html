@@ -1,0 +1,60 @@
+<html>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+
+<head>
+	<title>AtmosMarine</title>
+</head>
+
+<body>
+
+	<div style="text-align: center;">
+	    <img style="width: 700px; height: 120px;" src="fig/logo_atmosmarine.png" alt="atmosmarine">
+	    <!-- <h1 style="font-size:20px; font-weight: bold;">DATABASE <p> Buoys & WaveWach III </p> </h1> -->
+	</div>
+
+	<br>
+
+	<div style="text-align: center;">
+		<select style="font-size: 17px;" onchange="fig(this.value)">
+			<option value="img/WaveField_Hs.png" selected="selected">Wave Field - Hs</option>
+			<option value="img/WaveField_Tp.png">Wave Field - Tp</option>
+			<option value="img/PNBOIA_RIG.png">PNBOIA - Rio Grande/RS</option>
+			<option value="img/PNBOIA_FLN.png">PNBOIA - Florianópolis/SC</option>
+			<option value="img/PNBOIA_SAN.png">PNBOIA - Santos/SP</option>
+			<option value="img/PNBOIA_BGA.png">PNBOIA - Baia de Guanabara/RJ</option>
+			<option value="img/PNBOIA_CFR.png">PNBOIA - Cabo Frio/RJ</option>
+			<option value="img/PNBOIA_VIX.png">PNBOIA - Vitória/ES</option>
+			<option value="img/PNBOIA_PSG.png">PNBOIA - Porto Segura/BA</option>
+			<option value="img/PNBOIA_RCF.png">PNBOIA - Recife/PE</option>
+			<option value="img/PNBOIA_FTL.png">PNBOIA - Fortaleza/CE</option>
+			<option value="img/PNBOIA_BRN.png">PNBOIA - Barra Norte/AM</option>
+			<option value="img/NDBC_32012.png">NDBC - 32012</option>
+			<option value="img/NDBC_41002.png">NDBC - 41002</option>
+			<option value="img/NDBC_41013.png">NDBC - 41013</option>
+			<option value="img/NDBC_41025.png">NDBC - 41025</option>
+			<option value="img/NDBC_41060.png">NDBC - 41060</option>
+			<option value="img/NDBC_41114.png">NDBC - 41114</option>
+			<option value="img/NDBC_42058.png">NDBC - 42058</option>
+			<option value="img/NDBC_44020.png">NDBC - 44020</option>
+			<option value="img/NDBC_46215.png">NDBC - 46215</option>
+			<option value="img/NDBC_46229.png">NDBC - 46229</option>
+			<option value="img/NDBC_46248.png">NDBC - 46248</option>
+		</select>
+	</div>
+
+	<br>
+
+	<div align="center">
+	<img id ="img" style="width: 700px;" src = "fig/WaveField_Hs.png" />
+	</div>
+
+	<script>
+	    function fig(pathname)
+	    {
+	        var x = document.getElementById("img").src = pathname;
+	    }
+	</script>
+
+</body>
+</html>
+

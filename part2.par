@@ -1,0 +1,20 @@
+c     parameters:
+c     ----------
+c
+      LOGICAL CONTROL
+c             .ture.  = write control messages on unit 6
+c             .false. = else
+      PARAMETER( CONTROL=.TRUE. )
+      LOGICAL TRANSFORM
+c            .true.  = transform partitionings of wam first
+c                      guess spectra 
+c                      to match the mean values of the corresponding
+c                      sar partitioning
+c            .false. = do not
+      PARAMETER( TRANSFORM=.TRUE. )
+      INTEGER MSPEC, MPART, NANG, NFRE, NFRE100,NFRE19
+c                  array dimensions: spectra,partitionings,spectral 
+c                  directions and frequencies.
+CN      PARAMETER( MSPEC=1000, MPART=65, NANG=12, NFRE=25, NFRE19=19)
+      PARAMETER( MSPEC=50, MPART=65, NANG=24, NFRE=25, NFRE19=19)
+CN      PARAMETER( MSPEC=50, MPART=65, NANG=12, NFRE=37, NFRE19=19)

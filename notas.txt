@@ -1,0 +1,16 @@
+
+
+Banco de Dados
+* todas as boias/campanhas estao na mesma tabela, separado pelos ids
+* todas as tabelas tem o mesmo numero de colunas (variaveis)
+
+a) Telemetria 
+- argos_bruto - dados brutos sendo atualizado pelo Telnet para todas as boias (feito)
+- argos_qc - dados qualificados utilizando como base os dados brutos (a fazer)
+
+b) Cartão
+- cartao_bruto_all - dados brutos de todas as campanhas (xlsx)
+- cartao_bruto - dados das campanhas sem qc
+- cartao_qc - dados de todas as boias e campanhas com qc
+- flags_qc - matriz de flags com os testes de qc
+
