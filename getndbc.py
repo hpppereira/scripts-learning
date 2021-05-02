@@ -10,28 +10,26 @@ import matplotlib
 matplotlib.use('Agg') #necessario para salvar figura no crontab
 import os
 import numpy as np
-from urllib.request import urlopen
+# from urllib.request import urlopen
+from urllib import urlopen
 import pandas as pd
 import matplotlib.pyplot as plt
 
 #pathname and station names
-pathname = os.environ['HOME'] + '/Dropbox/database/realtime/buoys/ndbc/'
+pathname = os.environ['HOME'] + '/Dropbox/database/NDBC/realtime/'
 
 stations = [
-            '32012',
+            '32012', #pacifico - southwest peru
             '41002',
             '41013',
             '41025',
-            '41060',
-            '41114',
-            '42058',
-            #'44009',
-            '44020',
-            '46215',
-            '46229',
-            #'46236', #comecou a dar erro
-            '46248',
-            '51202'
+            # '41060',
+            # '41114',
+            # '42058',
+            # '44020',
+            # '46215',
+            # '46229',
+            # '51202'
             ]
 
 for station in stations:

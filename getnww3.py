@@ -1,9 +1,37 @@
 # coding: utf-8
-'''
-Extract and plot data from the NOMADS Data Server
-Henrique Pereira
-2019/04/12
-'''
+
+# # Retrieve WW3 model results for NDBC buoys location
+# 
+# All GRIB files can be retrieved from the directory ftp://polar.ncep.noaa.gov/pub/waves/. The GRIB directory format is YYYYMMDD.tHHz where YYYYMMDD is the date, tHHz is the run cycle identifier (t00z through t18z, respectively). The number of dates and cycles for which data are available may vary based upon available resources.
+# 
+# Alternatively, ftp://polar.ncep.noaa.gov/pub/waves/latest_run/ gives access to the most recent model results.
+# 
+# The file names for the GRIB files are model_ID.grib_ID.grb, where model_ID is a model identifier (nww3, akw, wna, nah or enp for global, Alaskan Waters Western North Atlantic, North Atlantic Hurricane and Easrern North Pacific model, respectively), and where grib_ID represents a GRIB identifier as in the table above. The file model_ID.all.grb contains all GRIB fields.
+# 
+# The global NWW3 model
+# The regional Alaskan Waters (AKW) model
+# The regional Western North Atlantic (WNA) model
+# The regional North Atlantic Hurricane (NAH) model
+# The regional Eastern North Pacific (ENP) model
+# The regional North Pacific Hurricane (NPH) model
+# 
+# # Examples of NWW3 Model Data Processing with Python
+# 
+# The following examples use Python to extract and visualize the sea surface height and ocean temperature in the NWW3 model using data from the NOMADS data server and a downloaded NWW3 GRiB2 file.
+# 
+# Prerequisites
+# 
+# The examples make use of the following free software:
+# 
+# Python
+# Numpy (Numerical Python
+# netcdf4-python: A Python/numpy interface for NetCDF and OpenDAP
+# Basemap: A module to plot data on map projections with matplotlib
+# pygrib (python module for reading GRiB files)
+# Example 1: Plot data from the NOMADS Data Server
+# Example 2: Plot data from an NWW3 GRiB2 file
+
+'''Extract and plot data from the NOMADS Data Server'''
 
 # basic NOMADS OpenDAP extraction and plotting script
 import matplotlib
@@ -16,8 +44,10 @@ import pandas as pd
 import datetime as dt
 import os
 
-pathname_nww3 = os.environ['HOME'] + '/data/'
-pathname_fig = os.environ['HOME'] + '/img/'
+# plt.close('all')
+
+pathname_nww3 = os.environ['HOME'] + '/Dropbox/database/NWW3/realtime/'
+pathname_fig = os.environ['HOME'] + '/Dropbox/metocean/web/img/'
 
 # Function to find index to nearest point
 def near(array,value):
@@ -57,17 +87,17 @@ print (lon.min(),lon.max())
 
 #lat, lon
 stat  = {
-		 # 'NDBC_32012':   [-19.425, -085.078 + 360], #east pacific ocean - very deep water
-		 # 'NDBC_41002':   [+31.760, -074.840 + 360], 
-		 # 'NDBC_41013':   [+33.436, -077.743 + 360],
-		 # 'NDBC_41060':   [+14.825, -051.016 + 360],
-		 # 'NDBC_41025':   [+35.006, -075.402 + 360],
-		 # 'NDBC_41114':   [+27.551, -080.222 + 360],
-		 # 'NDBC_42058':   [+14.923, -074.918 + 360],
-		 # 'NDBC_44020':   [+41.443, -070.187 + 360],
-		 # 'NDBC_46215':   [+35.204, -120.859 + 360],
-		 # 'NDBC_46229':   [+43.766, -124.551 + 360],
-		 # 'NDBC_51202':   [+21.415, -157.678 + 360], #hawaii (maybe the data is in one side of the island and the model in another)
+		 'NDBC_32012':   [-19.425, -085.078 + 360], #east pacific ocean - very deep water
+		 'NDBC_41002':   [+31.760, -074.840 + 360], 
+		 'NDBC_41013':   [+33.436, -077.743 + 360],
+		 'NDBC_41060':   [+14.825, -051.016 + 360],
+		 'NDBC_41025':   [+35.006, -075.402 + 360],
+		 'NDBC_41114':   [+27.551, -080.222 + 360],
+		 'NDBC_42058':   [+14.923, -074.918 + 360],
+		 'NDBC_44020':   [+41.443, -070.187 + 360],
+		 'NDBC_46215':   [+35.204, -120.859 + 360],
+		 'NDBC_46229':   [+43.766, -124.551 + 360],
+		 'NDBC_51202':   [+21.415, -157.678 + 360], #hawaii (maybe the data is in one side of the island and the model in another)
 		 'PNBOIA_BRN':   [+01.094, -046.350 + 360], #barra norte/am 
 		 'PNBOIA_FTL':   [-02.987, -038.819 + 360], #fortaleza/ce
 		 'PNBOIA_RCF':   [-08.149, -034.560 + 360], #recife/pe
@@ -105,13 +135,10 @@ for st in np.sort(list(stat.keys())):
 	tim = dtime[:]
 
 	# Create Pandas time series object
-	df = pd.DataFrame(np.array([hs, tp, dp, ws, wd]).T,
-					  index=pd.Series(tim, name='date'),
-					  columns=['hs', 'tp', 'dp', 'ws', 'wd'])
+	df = pd.DataFrame(np.array([hs, tp, dp, ws, wd]).T,index=pd.Series(tim, name='date'),columns=['hs', 'tp', 'dp', 'ws', 'wd'])
 
 	#open existed file (use for new station)
-	old = pd.read_csv(pathname_nww3 + 'NWW3_' + st + '.csv',
-					  sep=',', parse_dates=['date'], index_col=['date'])
+	old = pd.read_csv(pathname_nww3 + 'NWW3_' + st + '.csv', sep=',', parse_dates=['date'], index_col=['date'])
 
 	#concatenate new and old file
 	df = pd.concat([old, df], axis=0)

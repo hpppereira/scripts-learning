@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Adaptado para relatorios automaticos de modelagem
+% de ondas com o WW3
+%
+% Laboratorio de Insturmentacao Oceanografia
+% Henrique P. P. Pereira
+% Izabel C. M. Nogueira
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc} %pacote para utilizar acento
+\usepackage[version=3]{mhchem} % Package for chemical equation typesetting
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage{natbib} % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{xcolor,colortbl} %cores para tabela
+\usepackage{float} %localizacao da figura
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+
+\title{\textbf{Boletim de Previsão de Ondas - WW3} \\
+\vspace{1cm}
+Porto de Tubarão/ES  \\ Terminal da Ilha Guaíba/RJ} % Title
+
+\date{\today} % Date for the report
+\date{\today} % Date for the report
+
+\begin{document}
+
+\maketitle % Insert the title, author and date
+
+{\large
+\begin{center}
+Coordenador: \\
+\vspace{0.2cm}
+Carlos Eduardo Parente \\
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{center}
+Equipe: \\
+\vspace{0.2cm}
+Izabel C. M. Nogueira \\ 
+Henrique P. P. Pereira \\
+Isabela Cabral \\
+Talitha Lourenço \\
+Tamiris A. Fernandes 
+\end{center}
+}
+
+\vspace{2cm}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{fig/LIOc.jpg} \\ % Include the image placeholder.png
+\vspace{0.5cm}
+\textbf{Laboratório de Instrumentação Oceanográfica}
+\end{center}
+\end{figure}
+
+\pagebreak
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Porto de Tubarão}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1.1\textwidth]{fig/TU-local.jpg} % Include the image placeholder.png
+\caption{Área de Estudo - Porto de Tubarão/ES.}
+\end{center}
+\end{figure}
+
+\subsection{Resultados}
+
+\definecolor{Gray}{gray}{0.85}
+
+\begin{table}[H]
+\renewcommand{\baselinestretch}{2}
+\caption{\small Resultados da Previsão: GFS + WAVEWATCH III.}
+\center{Ponto 1: Lat -20.75 Lon -40.09}
+\center 
+\label{tabela_periodo}
+    \begin{tabular}{| c | c | c | c | c | c | c | c |}
+    \hline
+    \rowcolor{Gray}
+    \textbf{03/12/2014} & \textbf{00Z} & \textbf{06Z} & \textbf{12Z} & \textbf{18Z} \\ \hline \hline
+    \textbf{Hs} & 2.5 & 2.7 & 2.8 & 3.0 \\ \hline
+    \textbf{Tp} & 12.7 & 13.0 & 13.2 & 13.5 \\ \hline
+    \textbf{Dp} & 200 & 210 & 215 &  220 \\ \hline
+    \textbf{Hs-Swell} & 1.5 & 1.6 & 1.4 & 1.5 \\ \hline
+    \textbf{Hs-Sea} & 1 & 1.1 & 1.4 & 1.5 \\ \hline
+    \hline \hline
+    \rowcolor{Gray}
+    \textbf{04/12/2014} & \textbf{00Z} & \textbf{06Z} & \textbf{12Z} & \textbf{18Z} \\ \hline \hline
+    \textbf{Hs} & 2.5 & 2.7 & 2.8 & 3.0 \\ \hline
+    \textbf{Tp} & 12.7 & 13.0 & 13.2 & 13.5 \\ \hline
+    \textbf{Dp} & 200 & 210 & 215 &  220 \\ \hline
+    \textbf{Hs-Swell} & 1.5 & 1.6 & 1.4 & 1.5 \\ \hline
+    \textbf{Hs-Sea} & 1 & 1.1 & 1.4 & 1.5 \\ \hline
+    \hline \hline
+    \rowcolor{Gray}
+    \textbf{05/12/2014} & \textbf{00Z} & \textbf{06Z} & \textbf{12Z} & \textbf{18Z} \\ \hline \hline
+    \textbf{Hs} & 2.5 & 2.7 & 2.8 & 3.0 \\ \hline
+    \textbf{Tp} & 12.7 & 13.0 & 13.2 & 13.5 \\ \hline
+    \textbf{Dp} & 200 & 210 & 215 &  220 \\ \hline
+    \textbf{Hs-Swell} & 1.5 & 1.6 & 1.4 & 1.5 \\ \hline
+    \textbf{Hs-Sea} & 1 & 1.1 & 1.4 & 1.5 \\ \hline
+    \hline \hline
+    \rowcolor{Gray}
+    \textbf{06/12/2014} & \textbf{00Z} & \textbf{06Z} & \textbf{12Z} & \textbf{18Z} \\ \hline \hline
+    \textbf{Hs} & 2.5 & 2.7 & 2.8 & 3.0 \\ \hline
+    \textbf{Tp} & 12.7 & 13.0 & 13.2 & 13.5 \\ \hline
+    \textbf{Dp} & 200 & 210 & 215 &  220 \\ \hline
+    \textbf{Hs-Swell} & 1.5 & 1.6 & 1.4 & 1.5 \\ \hline
+    \textbf{Hs-Sea} & 1 & 1.1 & 1.4 & 1.5 \\ \hline
+    \hline \hline
+    \rowcolor{Gray}
+    \textbf{07/12/2014} & \textbf{00Z} & \textbf{06Z} & \textbf{12Z} & \textbf{18Z} \\ \hline \hline
+    \textbf{Hs} & 2.5 & 2.7 & 2.8 & 3.0 \\ \hline
+    \textbf{Tp} & 12.7 & 13.0 & 13.2 & 13.5 \\ \hline
+    \textbf{Dp} & 200 & 210 & 215 &  220 \\ \hline
+    \textbf{Hs-Swell} & 1.5 & 1.6 & 1.4 & 1.5 \\ \hline
+    \textbf{Hs-Sea} & 1 & 1.1 & 1.4 & 1.5 \\ \hline
+    \hline \hline
+    \rowcolor{Gray}
+    \textbf{08/12/2014} & \textbf{00Z} & \textbf{06Z} & \textbf{12Z} & \textbf{18Z} \\ \hline \hline
+    \textbf{Hs} & 2.5 & 2.7 & 2.8 & 3.0 \\ \hline
+    \textbf{Tp} & 12.7 & 13.0 & 13.2 & 13.5 \\ \hline
+    \textbf{Dp} & 200 & 210 & 215 &  220 \\ \hline
+    \textbf{Hs-Swell} & 1.5 & 1.6 & 1.4 & 1.5 \\ \hline
+    \textbf{Hs-Sea} & 1 & 1.1 & 1.4 & 1.5 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=1\textwidth]{fig/sww3_p019.jpg} % Include the image placeholder.png
+\caption{Séries temporais dos parâmetros de interesse}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{fig/pspec_p019_000.jpg} % Include the image placeholder.png
+\caption{Espectro de energia}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{fig/dspec_p019_000.jpg} % Include the image placeholder.png
+\caption{Espectro direcional}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{fig/pledsww3_hs_019.jpg} % Include the image placeholder.png
+\caption{Evolução do espectro direcional}
+\end{center}
+\end{figure}
+
+
+
+\end{document}
