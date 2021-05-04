@@ -1,6 +1,4 @@
-function [neta,netax,netay,netaxx,netayy,velx,vely,velz,velzz,velzzz,pr,dt,h,z,d,g] = geraonda3(tetamean)
-%clear,clc
-
+clear,clc
 
 %%% Variveis de sada %%%
 %neta - elevao
@@ -94,7 +92,7 @@ fmax=512/1024;
 dt=1;                                      
 x=0;                                      
 y=0;                                                                         
-%tetamean=180;                        
+tetamean=180;                        
 tetamax=tetamean+15; 
 tetamin=tetamean-15; 
 gama=3;                                       

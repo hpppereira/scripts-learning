@@ -1,5 +1,5 @@
 %-------------------------------------------------------------
-%ROTINA DE GERAÇAO DE REGISTROS DE ONDA
+%ROTINA DE GERACAO DE REGISTROS DE ONDA
 %-------------------------------------------------------------
 
 %-------------------------------------------------------------
@@ -30,22 +30,22 @@
 %ENT$.........ARQUIVO ED SAIDA
 %M............CONTADOR
 %N............CONTADOR
-%TETAMEAN.....DIREÇAO MEDIA
+%TETAMEAN.....DIREï¿½AO MEDIA
 %CM...........
-%TETAMIN......DIREÇAO MINIMA
-%PC...........CONTADOR DE % DE EXECUÇAO
+%TETAMIN......DIREï¿½AO MINIMA
+%PC...........CONTADOR DE % DE EXECUï¿½AO
 %S............
 %T............PERIODO
-%TETAMAX......DIREÇAO MAXIMA
+%TETAMAX......DIREï¿½AO MAXIMA
 %FP...........FREQUENCIA DE PICO
 %GAMA.........CONSTANTE GAMA
-%DELTATETA....INCREMENTO EM DIREÇAO
+%DELTATETA....INCREMENTO EM DIREï¿½AO
 %KM...........NUMERO DE FREQUENCIA
-%X............POSIÇAO X
+%X............POSIï¿½AO X
 %DT...........INCREMENTO DE TEMPO
 %PI...........PI
-%KN...........NUMERO DE COMPONENTES DE DIREÇAO
-%Y............POSIÇAO Y
+%KN...........NUMERO DE COMPONENTES DE DIREï¿½AO
+%Y............POSIï¿½AO Y
 %ETA..........
 %OO...........
 %FASE.........FASE
@@ -58,41 +58,41 @@
 %FMIN.........FREQUENCIA MINIMA
 %HSIG.........ALTURA SIGNIFICATIVA
 %FMAX.........FREQUENCIA MAXIMA
-%TETA.........DIREÇAO
+%TETA.........DIREï¿½AO
 %DELTAF.......INCREMENTO EM FREQUENCIA
 %NUM..........NUMERO DE DADOS GERADOS
 %ETAX........
-
 
 %INICIALIZACAO DE  VARIAVEIS
 %------------------------------------------------     
 clear
 
-h=100;                                       
-hsig=10;                                    
+h=inf;                                       
+hsig=3;                                    
 tp=10;                                        
 fmin=0.05;                                    
 fmax=0.15;                                    
 dt=1;                                      
 x=0;                                      
-y=0;                                                                         
-tetamin=60;   
-tetamean=90;                              
-tetamax=120;                               
+y=0;
+tetamean=45;                              
+tetamin=tetamean-15;
+tetamax=tetamean+15;                               
                              
 gama=3;                                       
 smax=50;                                  
-num=1024;                                 
+num=1024;
 km=100;                                   
 kn=36;                                        
 %-------------------------------------------------
 
+time = linspace(1, num*dt, num*dt);
 g=9.81;
 fp=1./tp;
 deltaf=(fmax-fmin)/(km-1);
 
 %----------------------------------------------------
-%CHAMA FUNÇAO DE CORREÇAO ANGULAR (function corrige)
+%CHAMA FUNï¿½AO DE CORREï¿½AO ANGULAR (function corrige)
 %----------------------------------------------------
 
 tetamin=corrige(tetamin);
@@ -145,7 +145,7 @@ for m=1:km;
         s=smax./(f(m)/fp)^2.5; 
     end
 
-%INTEGRAL DA FUNÇAO DE ESPALHAMENTO ANGULAR
+%INTEGRAL DA FUNï¿½AO DE ESPALHAMENTO ANGULAR
 %-----------------------------------------------
 
     integ=0;
@@ -165,7 +165,7 @@ for m=1:km;
         gteta=gzero.*cn(n)^(2.*s);      
         a=sqrt(2.*sf.*deltaf)*sqrt(gteta*deltateta);
     
-    %REDUÇAO GEOMETRICA DO PONTO DE ANALISE
+    %REDUï¿½AO GEOMETRICA DO PONTO DE ANALISE
         
         tt=k(m)*(x*cs(n)+y*sn(n))+fase;    
         
@@ -262,3 +262,7 @@ for i=1:num;
     netaxx(i)=etaxx;
     netayy(i)=etayy;
 end
+
+registro = [time', neta', netax', netay'];
+
+save registro_090_geraonda.txt -ascii registro

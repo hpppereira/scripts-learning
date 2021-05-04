@@ -1,23 +1,18 @@
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% filtra onda
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-direcao=dire1;
-ddir = zeros(8,248);
-cc = [1;9;17;25;33];
+% filtragem da daat
+% onda
 ik1 = 0;
-for ik=1:8
+for ik=1:4
     ik1=ik1+1;
     [b a]=butter(4,0.03);
-    y=direcao(ik,:);
+    y=dire(:,ik);
     y=y*2*pi/360;
     y=unwrap(y);
     w1=y*360/(2*pi);
     y1=cos(y);y2=sin(y);
-    w=zeros(1,248);
-    for i=5:248-5,
+    w=zeros(length(dire),1);
+    for i=5:length(dire)-5,
         g1=mean(y1(i-4:i+4));
         g2=mean(y2(i-4:i+4));
         g3=angle(g1+j*g2);g3=g3*360/(2*pi);
@@ -35,25 +30,23 @@ for ik=1:8
     w(g)=w(g)-360;
     g=find(w<0);
     w(g)=w(g)+360;
-    ddir(ik1,1:length(w))=w;
+    dire(1:length(w),ik1)=w;
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% filtra vento
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-y=wd1;
-wd2 = zeros(1,248);
 [b a]=butter(4,0.03);
+y=wd;
 y=y*2*pi/360;
 y=unwrap(y);
 w1=y*360/(2*pi);
-y1=cos(y);y2=sin(y);
-w=zeros(1,248);
-for i=5:248-5,
+y1=cos(y);
+y2=sin(y);
+w=zeros(1,length(wd));
+for i=5:length(wd)-5,
     g1=mean(y1(i-4:i+4));
     g2=mean(y2(i-4:i+4));
-    g3=angle(g1+j*g2);g3=g3*360/(2*pi);
+    g3=angle(g1+j*g2);
+    g3=g3*360/(2*pi);
     if g3<0
         g3=g3+360;
     end;
@@ -68,6 +61,4 @@ g=find(w>360);
 w(g)=w(g)-360;
 g=find(w<0);
 w(g)=w(g)+360;
-wd2 = w;
-
-
+wd(1:length(w))=w;
