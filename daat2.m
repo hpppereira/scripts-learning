@@ -46,8 +46,8 @@ g=size(fr2);g=g(2);
 %a15=0; %henrique comentou pois nao esta sendo usado o 'er5'
 
 %criterio de aceitacao do desvio padrao dos segmentos
-zm = 0.5; %series da axys (boas)
-%zm = 1.2; %series do gx3 (ruins)
+%zm = 0.5; %series da axys (boas)
+zm = 1.2; %series do gx3 (ruins)
 
 %segments with values of the standard deviations smaller
 %than the threshold are selected
@@ -73,7 +73,7 @@ a15 = a15 + dmag;
 
 %Correcting for declination
 % usando EtaEW e EtaNS ja esta descontado a dmag
-a15=270-a15;
+%a15=270-a15;
 
 %correcao de direcao para valores maiores e menores que 0 e 360
 g=find(a15<0);a15(g)=a15(g)+360;
@@ -166,8 +166,8 @@ z1=ww55(iwq+1);
 p=[p;0;0;0];p=p(1:2);
 e=[e;0;0;0];e=e(1:2);
 e=e*z1/sum(e);
-dire(it:it+1,kkl)=p;
-espe(it:it+1,kkl)=e;
+dire(it:it+1,ik)=p;
+espe(it:it+1,ik)=e;
 
 
 

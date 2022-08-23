@@ -4,7 +4,7 @@
 %% Input
 
 clear, clc, close all
-pathname = '/home/hp/Dropbox/daat/data/ADCP_Reserva/';
+pathname = 'ADCP_Reserva/';
 filename = 'ADCP_REEF_28_01_2016';
 
 fs = 2; %Hz
@@ -39,7 +39,16 @@ for i=1:max(wad(:,1))-2 % nao processa os 2 ultimos pontos
     matonda(i,:)=[hs,h10,hmax,thmax,tmed,hm0,tp,dp];
 end
 
-
+figure
+subplot(311)
+plot(matonda(:,1),'-o')
+ylabel('Hs (m)')
+subplot(312)
+plot(matonda(:,7),'-o')
+ylabel('Tp (s)')
+subplot(313)
+plot(matonda(:,8),'-o')
+ylabel('Dp (deg)')
 
 
         

@@ -40,4 +40,7 @@ function X = chisquare_inv(P,V);
 	
 	X = X*V;  % put back in the goofy V factor
 
+	return
+
+% end of code
 

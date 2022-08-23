@@ -1,39 +1,6 @@
 clear, clc, close all
-%**************************************************************************
-% Rotina daatcassino.m para uso da DAAT com wavelets com dados da b�ia
-% directional waverider
-%**************************************************************************
 
-%1. preparo de variaveis
-%2. carrega variaveis auxiliares
-%3. os arquivos a serem analisados est�o no vetor g27 preparado
-%por arrumabcampos.m e consistidos por spikesbcampos.m
-%4. gera arquivos sucessivos a cada tres horas
-%5. separa as tres series de heave pitch e roll
-%6. calcula espectro e separa as faixas de energia
-%7. Sao 5 faixas; para cada faixa prepara-se a fun�ao basica para a convolu�ao,
-%   faz-se a convolucao, e obtem-se  tet2(dire�ao principal)
-%   e sp2 (espectro) com tecnicas de maxima entropia - programa
-%   daatbcampos21.m
-%8. Seleciona-se os segmentos para o calculo de d(teta) - daatmarlim22
-%9. este programa calcula dire�ao principal e espectro para cada faixa
-%   (ate 2 valores)
-
-%possibilidades de entrada de dados:
-%1) arquivo g27 com o nome dos files obtidos a partir do script tipo
-%arruma
-%2) arquivo individual - fazer load depois do for (iv)
-%a15size=zeros(5,248);%quantidade de sementos selecionados por faixa
-%direcao=zeros(360,30);%caso se deseje guardar o arquivo
-%de dire��o correspondente a uma faixa
-%sa=[1;1;1;1;0.1];
-%mm=[[64;60;56;52;47] [34;33;0;0;0]...
-%          [24;22;20;18;0] [13;12;10;0;0]];
-
-%carrega dados de onda
-%dados=load('92051522.DAT');
-dados1=importdata('/home/lioc/Dropbox/publ/brbuoys/dados/200907241900.HNE',' ',11);
-dados1=importdata('/home/lioc/Dropbox/publ/brbuoys/dados/201203281400.HNE',' ',11);
+dados1=importdata('/home/hp/Dropbox/daat/dados/freakwave/200907241900.HNE',' ',11);
 
 n1 = dados1.data(:,2);
 
@@ -45,7 +12,6 @@ gl = 8;
 %vetor de tempo
 t = [0:dt:length(n1)*dt-dt];
 
-
 %calcula o espectro
 aa = spec(n1,dt,gl);
 f = aa(:,1);
@@ -54,6 +20,7 @@ qq1 = aa(:,2);
 %load ff
 ff=[7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;...
     22;24;25;27;29;32;35;39;43;49;55;62];
+
 mn=round(3*1./f(ff));
 wavecos=zeros(55,27);wavesen=wavecos;
 

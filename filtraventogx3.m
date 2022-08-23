@@ -1,4 +1,6 @@
 load out14_wind.mat
+out14_wind(:,2)=out14_wind(:,2)*(10/4)^(1/7);
+
 out14_wind(:,1)=out14_wind(:,1)-22;
 g=find(out14_wind(:,1)<0);out14_wind(g,1)=out14_wind(g,1)+360;
 ggg=size(out14_wind);ggg=ggg(1);
@@ -62,7 +64,16 @@ for ik=1:1,
     %ventodir1=ventodir1-22;
     g=find(ventodir1<0);ventodir1(g)=ventodir1(g)+360;
 
-              
+    data=[datenum(0,10,1):1/24:datenum(0,10,31,23,0,0)];
+figure (1)
+plot(data,ventodir1,'ob')
+title('Direção do vento da Ilha Rasa - OUT/2014')
+ylabel('Direção do vento (°)')
 
+axis([data(1) data(end) 0 360])   
+datetick('x','dd/mmm')
+grid on
+axis([data(1) data(end)+1/24 0 360])  
 
-
+    
+    

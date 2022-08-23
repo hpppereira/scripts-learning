@@ -69,16 +69,12 @@
 %              plot(time,log(coi),'k')
 %
 %----------------------------------------------------------------------------
-%   Copyright (C) 1995-1998, Christopher Torrence and Gilbert P. Compo
-%   University of Colorado, Program in Atmospheric and Oceanic Sciences.
+%   Copyright (C) 1995-2004, Christopher Torrence and Gilbert P. Compo
+%
 %   This software may be used, copied, or redistributed as long as it is not
-%   sold and this copyright notice is reproduced on each copy made.  This
+%   sold and this copyright notice is reproduced on each copy made. This
 %   routine is provided as is without any express or implied warranties
 %   whatsoever.
-%
-% Notice: Please acknowledge the use of this program in any publications:
-%   ``Wavelet software was provided by C. Torrence and G. Compo,
-%     and is available at URL: http://paos.colorado.edu/research/wavelets/''.
 %
 % Notice: Please acknowledge the use of the above software in any publications:
 %    ``Wavelet software was provided by C. Torrence and G. Compo,
@@ -89,11 +85,10 @@
 %
 % Please send a copy of such publications to either C. Torrence or G. Compo:
 %  Dr. Christopher Torrence               Dr. Gilbert P. Compo
-%  Advanced Study Program                 NOAA/CIRES Climate Diagnostics Center
-%  National Center for Atmos. Research    Campus Box 216
-%  P.O. Box 3000                          University of Colorado at Boulder
-%  Boulder CO 80307--3000, USA.           Boulder CO 80309-0216, USA.
-%  E-mail: torrence@ucar.edu              E-mail: gpc@cdc.noaa.gov
+%  Research Systems, Inc.                 Climate Diagnostics Center
+%  4990 Pearl East Circle                 325 Broadway R/CDC1
+%  Boulder, CO 80301, USA                 Boulder, CO 80305-3328, USA
+%  E-mail: chris[AT]rsinc[DOT]com         E-mail: compo[AT]colorado[DOT]edu
 %----------------------------------------------------------------------------
 function [wave,period,scale,coi] = ...
 	wavelet(Y,dt,pad,dj,s0,J1,mother,param);
@@ -148,3 +143,6 @@ coi = coi*dt*[1E-5,1:((n1+1)/2-1),fliplr((1:(n1/2-1))),1E-5];  % COI [Sec.3g]
 wave = wave(:,1:n1);  % get rid of padding before returning
 
 return
+
+% end of code
+

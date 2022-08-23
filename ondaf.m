@@ -28,7 +28,7 @@
 %
 
 
-function [f,an,anx,any,a1,b1,diraz,dirm,dirtp,fp,tp,hm0] = ondaf(n1,n2,n3,nfft,fs,h,dmag)
+function [f,an,anx,any,a1,b1,diraz,dirm,dirtp,fp,tp,hm0] = ondaf(n1,n2,n3,nfft,fs,h)
 
 
 %% Calculo do espectro pela funcao spectrum (subrotina spec e spec2)
@@ -38,8 +38,8 @@ function [f,an,anx,any,a1,b1,diraz,dirm,dirtp,fp,tp,hm0] = ondaf(n1,n2,n3,nfft,f
 
 %calculo do espectro
 [aan]=spec(n1,nfft,fs);
-[aanny]=spec2(n1,n2,nfft,fs);
-[aannx]=spec2(n1,n3,nfft,fs);
+[aannx]=spec2(n1,n2,nfft,fs);
+[aanny]=spec2(n1,n3,nfft,fs);
 
 %vetor de frequencia
 f=aan(:,1);
@@ -76,8 +76,11 @@ dirr=angle(a1+b1.*j);
 % Passa de rad. para grau (trigonometrico)
 dirt=dirr.*(180/pi);
 
-% Passa de trigonometrico para azimute e de onda ela vai para onde vem
-diraz=90-dirt + dmag;
+% Passa de trigonometrico para azimute
+diraz=270-dirt;
+
+% Muda de onde a onda vai para onde a onda vem (confirmar com parente)
+diraz=diraz-180;
 
 % Condicao para valores maior que 360 e menores que 0
 for i=1:length(diraz)

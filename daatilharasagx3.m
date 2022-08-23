@@ -30,8 +30,8 @@ clear, clc, close all
 %cria variaveis a23 e a24, com 360 colunas, que faz um circulo de 1 a -1
 load lyg2.mat;
 
-pathname = '/home/hp/Dropbox/metocean/codes/';
-pathnamewind = '/home/hp/Dropbox/database/hindcast/';
+%pathname = '/home/hp/Dropbox/metocean/codes/';
+%pathnamewind = '/home/hp/Dropbox/database/hindcast/';
 
 load dadosgx3.mat
 %load wind.mat
@@ -39,9 +39,9 @@ load dadosgx3.mat
 dmag = -23;
 
 %vento
-time = load([pathnamewind, 'time_IlhaRasa_201410.txt']);
-u = load([pathnamewind, 'uCFSR_IlhaRasa_201410.txt']);
-v = load([pathnamewind, 'vCFSR_IlhaRasa_201410.txt']);
+time = load('time_IlhaRasa_201410.txt');
+u = load('uCFSR_IlhaRasa_201410.txt');
+v = load('vCFSR_IlhaRasa_201410.txt');
 
 %retira dias repetidos
 [time,ia,ic] = unique(time);
@@ -199,6 +199,7 @@ for ik = 1:ikk
     if isnan(co)        
         ik = ik + 1;
     else
+
 
         %limite superior (3db) e limite inferior (3 db)
         % 1) 20     11.1
@@ -410,7 +411,7 @@ dire1 = dire(:,1:3:end);
 espe1 = espe(:,1:3:end) * 30; 
 energ1 = energ(:,1:3:end);
 
-% espe1(7:8,:) = 0;
+espe1(7:8,:) = 0;
 
 ws1 = ws(1:3:end);
 wd1 = wd(1:3:end);
@@ -420,4 +421,6 @@ wd1 = wd(1:3:end);
 mes = 10;
 ano = 2014;
 
+
 pledsmes
+

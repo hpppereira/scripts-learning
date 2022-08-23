@@ -9,7 +9,7 @@ mes=11;% mes
 ano=2006;% ano
 dt=1;%frequencia de amostragem
 %ler o diretorio
-!ls /home/hp/GoogleDrive/ages/data/boia_merenda/brutos > lista
+!ls > lista
 lista=textread('lista', '%s', 'delimiter', '\n','whitespace', '');
 z=char(lista);
 %seleciona os arquivos do mes
@@ -30,8 +30,8 @@ for ik=1:l;
     dd=a(:,3); % pitch
     de=a(:,4); %compas
     %correcao
-    dc= cos(pi*de/180) .* dc + sin(pi*de/180) .* dd;  
-    dd= -sin(pi*de/180) .* dc + cos(pi*de/180) .*dd; 
+    dc= cos(pi*de/180) .* dc + sin(pi*de/180) .* dd;  %roll
+    dd= -sin(pi*de/180) .* dc + cos(pi*de/180) .*dd;  % pitch
     % ................ 1D .......................
     qq1=spectrum(co,100,50);qq1=2*qq1(2:51,1); 
     df=f1(2)-f1(1);

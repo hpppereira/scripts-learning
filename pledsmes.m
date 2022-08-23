@@ -3,7 +3,7 @@
 
 figure1=figure;
 clf reset
-% df=f1(2)-f1(1);
+df=f1(2)-f1(1);
 
 %local=input('stationname = ');
 mes = 05; %input('mes = ');
@@ -153,8 +153,7 @@ d=1.75:2.25:13;
 text(1.15,40,'days in a month','fontsize',12,'rotation',90); % ??dire1(3,:)=dire1(7,:);
 w=[[1;6] [2;7] [3;8] [4;9]];
 bb=[0.3;0.3;0.3;0.3;0.3;0.3;0.3;0.3;0.3;0.3];
-
-for t=240:-1:1, %era ateh 1
+for t=240:-1:2, %era ateh 1
     %arquivo geral do dia
 %     s1=ddir1(:,t);
 %     s2=espe1(:,t);
@@ -167,7 +166,7 @@ for t=240:-1:1, %era ateh 1
     %s2=reshape(s2,2,5);
     %plotagem por faixa
 
-    for i=[2],
+    for i=[1 3 5 7],
         arq5=arq2(i,:);%cor
         %s11=s1(:,i);
         %s12=s2(:,i);

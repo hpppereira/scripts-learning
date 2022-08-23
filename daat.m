@@ -2,8 +2,8 @@
 % Oceanographic Instrumentation Laboratory - LIOc-COPPE/UFRJ
 % 
 % Developed by:  Parente (1999)
-%
-% Last modification: 2015/07/30
+% Contributions: Henrique P. P. Pereira
+% Last modification: 2016/03/10
 %
 %==========================================================================
 % Observations
@@ -21,8 +21,6 @@
 % tempo de registro = 20min
 % numero de pontos por registro = 1312
 % Dados: heave, dspNS, dspEW
-
-
 
 clear, clc, close all
 
@@ -61,14 +59,14 @@ load lyg2.mat;
 
 %AXYS - RIO_GRANDE PNBOIA - Processamento em batelada
 %ondas
-pathname =     '/home/hp/Dropbox/lioc/dados/pnboia/triaxys/rio_grande/HNE/';
-pathnamelist = '/home/hp/Dropbox/lioc/dados/pnboia/triaxys/listas/';
+pathname =     '/home/hp/Dropbox/pnboia/dados/bruto/triaxys/pre_proc/rio_grande/hne/';
+pathnamelist = '/home/hp/Dropbox/pnboia/dados/bruto/triaxys/pre_proc/listas/';
 
 %carrega listas da axys
-arq = load([pathnamelist,'list_RSDec09.txt']);
+arq = load([pathnamelist,'list_RSMay09.txt']);
 arqp = num2str(arq);
-mes = 12;
-ano = 2012;
+mes = 05;
+ano = 2009;
 local = 'Rio Grande/RS';
 %declinacao magnetica
 %dmag = -22; %santosrio grande
@@ -76,9 +74,9 @@ dmag = -23; %rio grande
 
 
 %vento
-time = load('/home/hp/Dropbox/pnboia/cfsr/time_RioGrande_200912.txt');
-u = load('/home/hp/Dropbox/pnboia/cfsr/uCFSR_RioGrande_200912.txt');
-v = load('/home/hp/Dropbox/pnboia/cfsr/vCFSR_RioGrande_200912.txt');
+time = load('/home/hp/Dropbox/cfsr/time_RioGrande_200905.txt');
+u = load('/home/hp/Dropbox/cfsr/uCFSR_RioGrande_200905.txt');
+v = load('/home/hp/Dropbox/cfsr/vCFSR_RioGrande_200905.txt');
 
 %retira dias repetidos
 [time,ia,ic] = unique(time);
@@ -91,6 +89,8 @@ wd = atan2(v,u) * 180 / pi; %vento de onde vem
 wd = 270 - wd; %de onde vai para onde vem
 wd(find(wd<0)) = wd(find(wd<0)) + 360;
 wd(find(wd>360)) = wd(find(wd>360)) - 360;
+
+tic %inicia a contagem do tempo de processamento
 
 %intervalo da amostragem (segundos)
 fs = 1.28; %0.78;
@@ -438,6 +438,9 @@ for ik = 1:ik
 
     end;
 end;  
+
+
+tempo_rodada = toc;
 
 %matriz de saida a cada 3 horas
 dire1 = dire(:,1:3:end); 

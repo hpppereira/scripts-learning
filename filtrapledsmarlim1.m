@@ -1,11 +1,9 @@
-% entrar com dire1
-% pular filtra pledsceara
 
 [b a]=butter(3,0.1);
 ddir1=zeros(10,248);
 
 for ik=1:10,    
-    h=dire1(ik,:);
+    h=ddir(ik,:);
     hh=h;
     g=find(h>0);
     g1=diff(g);

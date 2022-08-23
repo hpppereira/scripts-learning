@@ -2,7 +2,6 @@
 
 %h=dire(4,:)';
 
-h=h';
 h1=find(h>0);
 h2=diff(h1);
 h2=[0;h2];

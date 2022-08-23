@@ -1,0 +1,1 @@
+[tempo, heave, dspN, dsp E] = textread('200907241900.HNE','%n%n%n%n%*[^\n]','delimiter',' ', 'headerlines', 11);
